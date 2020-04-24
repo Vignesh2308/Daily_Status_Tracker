@@ -1,0 +1,156 @@
+{% extends 'Tracker/base.html' %}
+{% block body_block%}
+<h1>Enter the Details Below</h1>
+
+<form action="{% url 'Tracker:home' %}" class="form-group" method="POST" >
+    {% csrf_token %}
+    <div class="form-group row">
+        <h2 class="text-center col-sm-12">Daily status Tracker</h2>
+    </div>
+
+    <div class="form-group row">
+        <label for="emp_id" class="col-sm-4 col-form-label">Employee ID:</label>
+
+        <input type="number" class="col-sm-8 form-control" id="emp_id" name="emp_id" placeholder="Enter your Employee ID">
+    </div>
+
+    <div class="form-group row">
+        <label for="emp_name" class="col-sm-4 col-form-label">Name:</label>
+
+        <input type="text" class="col-sm-8 form-control" name="emp_name" id="emp_name" placeholder="Enter your Name">
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-4 col-form-label" for="training_name">Training Name:</label>
+
+        <input type="text" id="training_name" name="training_name" class="col-sm-8 form-control" placeholder="Enter the Training Name">
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-4 col-form-label" for="source">Source:</label>
+
+        <select class="custom-select col-sm-8" id="source" name="source">
+            <option selected disabled>Select</option>
+            <option value="Lex">Lex</option>
+            <option value="Webex">Webex</option>
+            <option value="others">Others</option>
+        </select>
+    </div>
+
+    <div class="form-group row" id="source_others">
+        <label class="col-sm-4 col-form-label" for="source_other">Source Name:</label>
+        <input type="text" id="source_other" name="source_other" class="col-sm-8 form-control" placeholder="Enter Source Name">
+    </div>
+
+    <div class="form-group row">
+        <label for="cur_date" class="col-sm-4 col-form-label">Today's Date</label>
+
+        <input id="cur_date" name="cur_date" type="date" class="col-sm-8 form-control">
+    </div>
+
+
+    <div class="form-group row">
+        <label for="completion_date" class="col-sm-4 col-form-label">Training Completion Date</label>
+
+        <input id="completion_date" name="completion_date" type="date" class="col-sm-8 form-control">
+    </div>
+
+
+    <div class="form-group row">
+        <label for="tot_hours" class="col-sm-4 col-form-label">Total Training Hrs</label>
+
+        <input id="tot_hours" name="tot_hours" type="number" class="col-sm-8 form-control" min="0"
+               placeholder="Enter Total Hours of Training">
+    </div>
+
+    <div class="form-group row">
+        <label for="hours_spent" class="col-sm-4 col-form-label">Hours Spent Today</label>
+        <input type="number" id="hours_spent" name="hours_spent" class="col-sm-8 form-control" min="0"
+               placeholder="Enter Hours spent today">
+    </div>
+
+    <div class="form-group row">
+        <label for="training_type"  class="col-sm-4 col-form-label">Training Type</label>
+        <select class="col-sm-8 form-control" id="training_type" name="training_type">
+            <option selected disabled>Select</option>
+            <option value="Internal">Internal</option>
+            <option value="External">External</option>
+        </select>
+    </div>
+
+    <div class="form-group row">
+        <label for="skill" class="col-sm-4 col-form-label">Skill Type</label>
+        <select class="col-sm-8 form-control" id="skill" name="skill">
+            <option selected disabled>Select</option>
+            <option value="Core">Core</option>
+            <option value="New">New</option>
+        </select>
+    </div>
+
+    <div class="form-group row">
+        <label for="certification" class="col-sm-4 col-form-label">Certification</label>
+        <select class="col-sm-8 form-control" id="certification" name="certification">
+            <option selected disabled>Select</option>
+            <option value="Yes">Available</option>
+            <option value="No">Unavailable</option>
+        </select>
+    </div>
+
+    <div class="form-group row">
+        <label for="certified" class="col-sm-4 col-form-label">Certified</label>
+
+        <select class="col-sm-8 form-control" id="certified" name="certified">
+            <option selected disabled>Select</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+            <option value="NA">Not Applicable</option>
+        </select>
+    </div>
+
+    <div class="form-group row">
+        <label for="lex_link" class="col-sm-4 col-form-label">Lex Link</label>
+
+        <input type="text" id="lex_link" name="lex_link" class="col-sm-8 form-control" placeholder="Enter course link">
+    </div>
+
+    <div class="form-group row">
+        <label for="task" class="col-sm-4 col-form-label">Task</label>
+        <input type="text" id="task" name="task" class="col-sm-8 form-control" placeholder="Enter Task Name">
+    </div>
+
+    <div class="form-group row">
+        <label for="description" class="col-sm-4 col-form-label">Task Description</label>
+        <textarea id="description" name="description" class="col-sm-8 form-control" placeholder="Enter Task Description"></textarea>
+    </div>
+
+    <div class="form-group row">
+        <label for="ttl_hours" class="col-sm-4 col-form-label">Total hours</label>
+        <input type="text" id="ttl_hours" name="ttl_hours" class="col-sm-8 form-control" min="0" placeholder="Total hours">
+
+    </div>
+
+    <div class="form-group row">
+
+        <label for="assessment" class="col-sm-4 col-form-label">Assessment</label>
+
+        <select class="col-sm-8 form-control" id="assessment" name="assessment">
+            <option selected disabled>Select</option>
+            <option value="Yes">Available</option>
+            <option value="No">Unavailable</option>
+        </select>
+    </div>
+
+    <div id="assess_comp" class="form-group row">
+        <label for="assess_status" class="col-sm-4 col-form-label">Assessment Status</label>
+
+        <select class="col-sm-8 form-control" id="assess_status">
+            <option selected disabled>Select</option>
+            <option value="Yes">Completed</option>
+            <option value="No">Yet to Complete</option>
+        </select>
+    </div>
+
+    <input type="submit" value="Post" class="btn btn-primary btn-center">
+
+</form>
+{% endblock %}
